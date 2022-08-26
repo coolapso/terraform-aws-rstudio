@@ -1,0 +1,52 @@
+name: Test
+
+on:
+  push:
+    branches: 
+      - master
+      - test
+      - beta
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        
+      - name: install terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.2.5
+      
+      - name: Install semantic-release plugins
+        run: |
+          npm install @semantic-release/github -D
+          npm install @semantic-release/changelog -D
+
+      - name: Lint
+        run: docker run --rm -v "$(pwd):/data" -t ghcr.io/terraform-linters/tflint-bundle:latest
+      
+      - name: terraform fmt
+        run: terraform fmt -check
+
+      - name: terraform plan
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: eu-north-1
+        run: |
+            terraform init
+            terraform plan
+
+      - name: Check tfdocs
+        run: docker run --rm --volume "$(pwd):/terraform-docs" -u $(id -u) quay.io/terraform-docs/terraform-docs:latest /terraform-docs --output-check
+
+      
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release
+        if: ${{ github.event_name == 'push' }}

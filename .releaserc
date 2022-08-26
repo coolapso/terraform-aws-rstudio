@@ -1,0 +1,14 @@
+{
+  "name": "ezrstudio",
+  "plugins": [],
+  "release": {
+    "branches": [ "master", "beta", "test" ]
+  },
+
+  "branches": [
+    {name: 'master'},
+    {name: 'beta', channel: 'release', prerelease: true},
+    {name: 'test', channel: 'test', prerelease: true}
+  ]
+}
+
