@@ -12,7 +12,6 @@ Its fully customizable and You can define what types of servers and images you w
 * SSH Key Pair
 * Security group
 * EC2 Instance
-    * Lousaslett AMI: t3.micro  (This AMI Supports any type of instance)
     * rstudio AMI: g4dn.xlarge (This AMI only supports instances with Graphics cards)
     * relevancelab AMI: t2.large (This AMI only supports t2.large instances)
     * Custom AMI: t3.micro
