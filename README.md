@@ -70,7 +70,7 @@ Feel free to open github issue with your questions or suggestions.
 | <a name="input_ami_type"></a> [ami\_type](#input\_ami\_type) | Type of AMI to use, cuda, tensorflow, custom | `string` | `"rstudio"` | no |
 | <a name="input_az"></a> [az](#input\_az) | Availability zone to place the instance at | `string` | `null` | no |
 | <a name="input_create_key"></a> [create\_key](#input\_create\_key) | Defines if ssh privatekey is going to be created | `bool` | `true` | no |
-| <a name="input_custom_ami"></a> [custom\_ami](#input\_custom\_ami) | Custom AMI Id to be used | `any` | `null` | no |
+| <a name="input_custom_ami"></a> [custom\_ami](#input\_custom\_ami) | Custom AMI Id to be used | `string` | `null` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | The type of ec2 instance to be used | `string` | `"t3.micro"` | no |
 | <a name="input_key_name"></a> [key\_name](#input\_key\_name) | The ssh keypair name | `string` | `"RSTudio-SSH"` | no |
 | <a name="input_monitoring"></a> [monitoring](#input\_monitoring) | enables monitoring on the instance | `bool` | `false` | no |
@@ -85,6 +85,7 @@ Feel free to open github issue with your questions or suggestions.
 | <a name="output_dns_name"></a> [dns\_name](#output\_dns\_name) | n/a |
 | <a name="output_instance_id"></a> [instance\_id](#output\_instance\_id) | n/a |
 | <a name="output_ip_address"></a> [ip\_address](#output\_ip\_address) | n/a |
+| <a name="output_username"></a> [username](#output\_username) | n/a |
 <!-- END_TF_DOCS -->
 
 # Contribute
