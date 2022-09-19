@@ -2,6 +2,10 @@ output "address" {
   value = lookup(local.rstudio_address, var.ami_type)
 }
 
+output "username" {
+  value = lookup(local.rstudio_username, var.ami_type)
+}
+
 output "dns_name" {
   value = module.ec2_instance.public_dns
 }

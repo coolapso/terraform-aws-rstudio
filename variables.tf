@@ -41,16 +41,19 @@ variable "region" {
 
 variable "ami_type" {
   description = "Type of AMI to use, cuda, tensorflow, custom"
+  type        = string
   default     = "rstudio"
 }
 
 variable "custom_ami" {
   description = "Custom AMI Id to be used"
+  type        = string
   default     = null
 }
 
 variable "instance_type" {
   description = "The type of ec2 instance to be used"
+  type        = string
   default     = "t3.micro"
 }
 
@@ -62,15 +65,18 @@ variable "rstudio_instance_type" {
 
 variable "create_key" {
   description = "Defines if ssh privatekey is going to be created"
+  type        = bool
   default     = true
 }
 
 variable "key_name" {
   description = "The ssh keypair name"
+  type        = string
   default     = "RSTudio-SSH"
 }
 
 variable "monitoring" {
   description = "enables monitoring on the instance"
+  type        = bool
   default     = false
 }
