@@ -21,7 +21,7 @@ jobs:
       - name: install terraform
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: 1.2.5
+          terraform_version: 1.3.5
       
       - name: Install semantic-release plugins
         run: |
