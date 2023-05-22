@@ -46,16 +46,17 @@ module "vpc" {
 
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "~> 3.0"
+  version = "~> 5.0"
 
   name = "ezrstudio"
 
-  ami                    = lookup(local.ami_map, var.ami_type)
-  instance_type          = lookup(local.instance_map, var.ami_type)
-  key_name               = var.key_name
-  monitoring             = var.monitoring
-  vpc_security_group_ids = [module.rstudio_sg.security_group_id]
-  subnet_id              = module.vpc.public_subnets[0]
+  ami                         = lookup(local.ami_map, var.ami_type)
+  instance_type               = lookup(local.instance_map, var.ami_type)
+  key_name                    = var.key_name
+  monitoring                  = var.monitoring
+  vpc_security_group_ids      = [module.rstudio_sg.security_group_id]
+  subnet_id                   = module.vpc.public_subnets[0]
+  associate_public_ip_address = var.associate_public_ip_address
 
   tags = {
     Terraform   = "true"
@@ -68,7 +69,7 @@ module "ec2_instance" {
 
 module "rstudio_sg" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 4.9.0"
+  version = "~> 4.17.2"
 
   name                = "rstudio-cuda"
   description         = "Security group to allow traffic for RStudio Server"

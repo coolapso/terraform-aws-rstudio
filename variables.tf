@@ -70,3 +70,9 @@ variable "monitoring" {
   type        = bool
   default     = false
 }
+
+variable "associate_public_ip_address" {
+  description = "Associate a public ip address with the instance"
+  type        = bool
+  default     = true
+}

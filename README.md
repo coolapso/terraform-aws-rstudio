@@ -49,9 +49,9 @@ Feel free to open github issue with your questions or suggestions.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_ec2_instance"></a> [ec2\_instance](#module\_ec2\_instance) | terraform-aws-modules/ec2-instance/aws | ~> 3.0 |
+| <a name="module_ec2_instance"></a> [ec2\_instance](#module\_ec2\_instance) | terraform-aws-modules/ec2-instance/aws | ~> 5.0 |
 | <a name="module_key_pair"></a> [key\_pair](#module\_key\_pair) | terraform-aws-modules/key-pair/aws | >=2.0.0 |
-| <a name="module_rstudio_sg"></a> [rstudio\_sg](#module\_rstudio\_sg) | terraform-aws-modules/security-group/aws | ~> 4.9.0 |
+| <a name="module_rstudio_sg"></a> [rstudio\_sg](#module\_rstudio\_sg) | terraform-aws-modules/security-group/aws | ~> 4.17.2 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | >=3.14.2 |
 
 ## Resources
@@ -66,6 +66,7 @@ Feel free to open github issue with your questions or suggestions.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_ami_type"></a> [ami\_type](#input\_ami\_type) | Type of AMI to use, cuda, tensorflow, custom | `string` | `"relevancelab"` | no |
+| <a name="input_associate_public_ip_address"></a> [associate\_public\_ip\_address](#input\_associate\_public\_ip\_address) | Associate a public ip address with the instance | `bool` | `true` | no |
 | <a name="input_az"></a> [az](#input\_az) | Availability zone to place the instance at | `string` | `null` | no |
 | <a name="input_create_key"></a> [create\_key](#input\_create\_key) | Defines if ssh privatekey is going to be created | `bool` | `true` | no |
 | <a name="input_custom_ami"></a> [custom\_ami](#input\_custom\_ami) | Custom AMI Id to be used | `string` | `null` | no |
@@ -73,7 +74,6 @@ Feel free to open github issue with your questions or suggestions.
 | <a name="input_key_name"></a> [key\_name](#input\_key\_name) | The ssh keypair name | `string` | `"RSTudio-SSH"` | no |
 | <a name="input_monitoring"></a> [monitoring](#input\_monitoring) | enables monitoring on the instance | `bool` | `false` | no |
 | <a name="input_region"></a> [region](#input\_region) | Region to place resources | `string` | `"eu-central-1"` | no |
-| <a name="input_rstudio_instance_type"></a> [rstudio\_instance\_type](#input\_rstudio\_instance\_type) | Instance type to be used by rstudio AMI, use only GPU instances | `string` | `"g4dn.xlarge"` | no |
 
 ## Outputs
 
