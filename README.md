@@ -12,7 +12,6 @@ Its fully customizable and You can define what types of servers and images you w
 * SSH Key Pair
 * Security group
 * EC2 Instance
-    * rstudio AMI: g4dn.xlarge (This AMI only supports instances with Graphics cards)
     * relevancelab AMI: t2.large (This AMI only supports t2.large instances)
     * Custom AMI: t3.micro
 
@@ -36,15 +35,15 @@ Feel free to open github issue with your questions or suggestions.
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~>4.28.0 |
-| <a name="requirement_tls"></a> [tls](#requirement\_tls) | 3.4.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >=4.28.0 |
+| <a name="requirement_tls"></a> [tls](#requirement\_tls) | >=3.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | ~>4.28.0 |
-| <a name="provider_tls"></a> [tls](#provider\_tls) | 3.4.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >=4.28.0 |
+| <a name="provider_tls"></a> [tls](#provider\_tls) | >=3.0.0 |
 
 ## Modules
 
@@ -59,15 +58,14 @@ Feel free to open github issue with your questions or suggestions.
 
 | Name | Type |
 |------|------|
-| [tls_private_key.this](https://registry.terraform.io/providers/hashicorp/tls/3.4.0/docs/resources/private_key) | resource |
-| [aws_ami.relevance](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami) | data source |
-| [aws_ami.rstudio](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami) | data source |
+| [tls_private_key.this](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key) | resource |
+| [aws_ami.relevancelab](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_ami_type"></a> [ami\_type](#input\_ami\_type) | Type of AMI to use, cuda, tensorflow, custom | `string` | `"rstudio"` | no |
+| <a name="input_ami_type"></a> [ami\_type](#input\_ami\_type) | Type of AMI to use, cuda, tensorflow, custom | `string` | `"relevancelab"` | no |
 | <a name="input_az"></a> [az](#input\_az) | Availability zone to place the instance at | `string` | `null` | no |
 | <a name="input_create_key"></a> [create\_key](#input\_create\_key) | Defines if ssh privatekey is going to be created | `bool` | `true` | no |
 | <a name="input_custom_ami"></a> [custom\_ami](#input\_custom\_ami) | Custom AMI Id to be used | `string` | `null` | no |

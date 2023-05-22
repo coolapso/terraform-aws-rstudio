@@ -1,14 +1,6 @@
-data "aws_ami" "rstudio" {
-  most_recent = true
-  owners      = ["679593333241"]
+data "aws_ami" "relevancelab" {
+  count = var.ami_type == "relevancelab" ? 1 : 0
 
-  filter {
-    name   = "name"
-    values = ["rs-marketplace-gpu*"]
-  }
-}
-
-data "aws_ami" "relevance" {
   most_recent = true
   owners      = ["679593333241"]
 

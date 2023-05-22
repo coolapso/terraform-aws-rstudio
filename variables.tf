@@ -1,25 +1,21 @@
 locals {
   az = var.az != null ? var.az : "${var.region}b"
   ami_map = {
-    "rstudio"      = data.aws_ami.rstudio.id
-    "relevancelab" = data.aws_ami.relevance.id
+    "relevancelab" = var.ami_type == "relevancelab" ? data.aws_ami.relevancelab[0].id : null
     "custom"       = var.custom_ami
   }
 
   instance_map = {
-    "rstudio"      = var.rstudio_instance_type
     "relevancelab" = "t2.large"
     "custom"       = var.instance_type
   }
 
   rstudio_address = {
-    "rstudio"      = "http://${module.ec2_instance.public_dns}:8787"
     "relevancelab" = "https://${module.ec2_instance.public_dns}"
     "custom"       = "http://${module.ec2_instance.public_dns}"
   }
 
   rstudio_username = {
-    "rstudio"      = "rstudio-user"
     "relevancelab" = "rstudio"
     "custom"       = "User unknown, please verify with the provided ami instructions"
   }
@@ -42,7 +38,7 @@ variable "region" {
 variable "ami_type" {
   description = "Type of AMI to use, cuda, tensorflow, custom"
   type        = string
-  default     = "rstudio"
+  default     = "relevancelab"
 }
 
 variable "custom_ami" {
@@ -55,12 +51,6 @@ variable "instance_type" {
   description = "The type of ec2 instance to be used"
   type        = string
   default     = "t3.micro"
-}
-
-variable "rstudio_instance_type" {
-  description = "Instance type to be used by rstudio AMI, use only GPU instances"
-  type        = string
-  default     = "g4dn.xlarge"
 }
 
 variable "create_key" {
