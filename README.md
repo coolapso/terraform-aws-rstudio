@@ -1,10 +1,8 @@
-# ezRStudio
+# terraform aws rstudio
 
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) 
 
-ezRStudio uses terraform and a set of pre-build cloud specific server images to create all the required resources on AWS and get you up and running with RStudio server on an instance with the specs you need.
-
-With ezRStudio you don't need to worry about learning all the AWS specifics and repeat the same steps over and over again every time you want to start or stop your server. 
+Builds an RStudio Server on AWS EC2 instance using either pre-defined publiclly available AMIs or custom AMIs.
 
 Its fully customizable and You can define what types of servers and images you want to use, however by default this are the resources it spins up for you
 
