@@ -65,6 +65,12 @@ variable "key_name" {
   default     = "RSTudio-SSH"
 }
 
+variable "ec2_instance_name" {
+  description = "The name of the ec2 instance"
+  type        = string
+  default     = "RStudio-Server"
+}
+
 variable "monitoring" {
   description = "enables monitoring on the instance"
   type        = bool

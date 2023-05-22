@@ -48,7 +48,7 @@ module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 5.0"
 
-  name = "ezrstudio"
+  name = var.ec2_instance_name
 
   ami                         = lookup(local.ami_map, var.ami_type)
   instance_type               = lookup(local.instance_map, var.ami_type)
